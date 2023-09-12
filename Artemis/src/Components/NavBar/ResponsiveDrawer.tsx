@@ -14,6 +14,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import Button from '@mui/material/Button';
+
 
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -119,6 +121,7 @@ export default function ResponsiveDrawer(props: Props) {
         ))}
       </List>
 
+      <Button variant="contained" color="success"  sx={{marginTop: "70px"}}>Cerrar Sesion</Button>
     </div>
   );
 
