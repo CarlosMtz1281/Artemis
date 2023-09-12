@@ -1,21 +1,7 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import {Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
 
+import SettingsIcon from '@mui/icons-material/Settings';
 import AssessmentIcon from '@mui/icons-material/Assessment';
-import MenuIcon from '@mui/icons-material/Menu';
-
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import InventoryRoundedIcon from '@mui/icons-material/InventoryRounded';
@@ -23,17 +9,6 @@ import InventoryRoundedIcon from '@mui/icons-material/InventoryRounded';
 import { navbarStyles } from './styles.tsx'
 
 import { useNavigate } from "react-router-dom";
-
-const drawerWidth = 240;
-
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-}
-
 
 const NavbarItems = [
   {
@@ -59,24 +34,25 @@ const NavbarItems = [
     icon: <AssessmentIcon />,
     label: 'Reporte',
     route: 'reporte',
+  },
+  {
+    id: 4,
+    icon: <SettingsIcon />,
+    label:'Configuracion',
+    route: 'configuracion',
   }
-
 ]
 
-
-export default function ResponsiveDrawer(props: Props) {
+export default function ResponsiveDrawer(){
   const navigate = useNavigate();
-
- 
-
   const drawer = (
     <div>
+
       <Toolbar />
-      <h1>H&O</h1>
-      <Divider sx = {{ borderBottomWidth: 3,
-      backgroundColor: 'rgb(255, 250, 224)' }}/>
+      <h1>LOGO</h1>
+      <Divider sx = {{ borderBottomWidth: 3, backgroundColor: 'rgb(255, 250, 224)' }}/>
       <List>
-        {NavbarItems.map((item, index) => (
+        {NavbarItems.map((item) => (
           <ListItem key={item.id} onClick={() => navigate(item.route)}>
             <ListItemButton>
               <ListItemIcon sx = {navbarStyles.icons}>

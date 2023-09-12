@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
@@ -13,6 +12,7 @@ import Inventario from './pages/Inventario/Inventario.tsx'
 import Ingresos from './pages/Ingresos/Ingresos.tsx'
 import Gastos from './pages/Gastos/Gastos.tsx'
 import Reporte from './pages/Reporte/Reporte.tsx'
+import Configuracion from './pages/Configuracion/Configuracion.tsx'
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
@@ -24,6 +24,7 @@ root.render(
       <Route path="ingresos" element={<Ingresos />} />
       <Route path="gastos" element={<Gastos />} />
       <Route path="reporte" element={<Reporte />} />
+      <Route path="configuracion" element={<Configuracion />} />
     </Route>
   </Routes>
 </BrowserRouter>,
