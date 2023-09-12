@@ -7,12 +7,10 @@ import { Outlet } from "react-router-dom"
 import Grid from '@mui/material/Grid';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <Grid container>
-      <ResponsiveDrawer />
-      <Outlet />
+        <ResponsiveDrawer />
+        <Outlet />
     </Grid>
   )
 }
