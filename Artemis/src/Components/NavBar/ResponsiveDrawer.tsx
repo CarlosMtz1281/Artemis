@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+// -------------------------MUI IMPORTS----------------------------------
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,15 +18,23 @@ import ListItemText from '@mui/material/ListItemText';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import MenuIcon from '@mui/icons-material/Menu';
 
+//---------------- ICONS
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import InventoryRoundedIcon from '@mui/icons-material/InventoryRounded';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 import { navbarStyles } from './styles.tsx'
 
+//------------------Navigate
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-const drawerWidth = 240;
+//------------------Colors
+import { colors } from '../../css/constants.tsx'
+
+
+
 
 interface Props {
   /**
@@ -38,24 +48,30 @@ interface Props {
 const NavbarItems = [
   {
     id: 0,
+    icon: <AdminPanelSettingsIcon />,
+    label: 'Panel de Control',
+    route: 'PanelControl',
+  },
+  {
+    id: 1,
     icon: <InventoryRoundedIcon />,
     label: 'Inventario',
     route: 'inventario',
   },
   {
-    id: 1,
+    id: 2,
     icon: <MonetizationOnIcon />,
     label: 'Ingresos',
     route: 'ingresos',
   },
   {
-    id: 2,
+    id: 3,
     icon: <ReceiptLongIcon />,
     label: 'Gastos',
     route: 'gastos',
   },
   {
-    id: 3,
+    id: 4,
     icon: <AssessmentIcon />,
     label: 'Reporte',
     route: 'reporte',
@@ -66,18 +82,33 @@ const NavbarItems = [
 
 export default function ResponsiveDrawer(props: Props) {
   const navigate = useNavigate();
+  const location = useLocation();
 
- 
+
+
 
   const drawer = (
     <div>
       <Toolbar />
-      <h1>H&O</h1>
-      <Divider sx = {{ borderBottomWidth: 3,
-      backgroundColor: 'rgb(255, 250, 224)' }}/>
+      <h1>LOGO</h1>
+      {/* <Divider sx = {{ borderBottomWidth: 3,
+      backgroundColor: 'rgb(255, 250, 224)' }}/> */}
       <List>
         {NavbarItems.map((item, index) => (
-          <ListItem key={item.id} onClick={() => navigate(item.route)}>
+          <ListItem key={item.id}
+          onClick={() => navigate(item.route)}
+          sx={
+            location.pathname === `/${item.route}`
+              ? {
+                backgroundColor: colors.lightGreen,
+                borderTopRightRadius: '15px',
+                borderBottomRightRadius: '15px',
+                width: '300px',
+
+
+              } // Apply green background if the route matches
+              : {} // Otherwise, don't apply any background
+      }>
             <ListItemButton>
               <ListItemIcon sx = {navbarStyles.icons}>
                 {item.icon}
@@ -87,7 +118,7 @@ export default function ResponsiveDrawer(props: Props) {
           </ListItem>
         ))}
       </List>
-      
+
     </div>
   );
 
@@ -99,5 +130,5 @@ export default function ResponsiveDrawer(props: Props) {
     >
       {drawer}
     </Drawer>
-  ); 
+  );
 }
