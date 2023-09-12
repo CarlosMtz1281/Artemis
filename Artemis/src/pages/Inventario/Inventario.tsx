@@ -1,4 +1,6 @@
 import React from 'react'
+
+//MUI IMPORTS
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,14 +11,27 @@ import Paper from '@mui/material/Paper';
 import { TableVirtuoso, TableComponents } from 'react-virtuoso';
 import Grid from '@mui/material/Grid';
 
-// Class of Data with labels of each COLUMN 
+//modal
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import { Button } from '@mui/material';
+
+//autocomplete
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+
+//style
+import {styles} from './style.tsx'
+
+//---------------------------------------------TABLE CODE---------------------------------------------
+// Class of Data with labels of each COLUMN
 interface Data {
-calories: number;
-carbs: number;
-dessert: string;
-fat: number;
-id: number;
-protein: number;
+    id: number;
+    nombre: string;
+    cantidad: number;
+    costoPorUni: number;
+
 }
 
 
@@ -27,74 +42,66 @@ numeric?: boolean;
 width: number;
 }
 
-// Type of values each value in the ROW should have 
-type Sample = [string, number, number, number, number];
+// Type of values each value in the ROW should have
+type Sample = [string, number, number];
 
 // VALUES inside the table
 const sample: readonly Sample[] = [
-['Huevo', 159, 6.0, 24, 4.0],
-['Cafe Negro', 237, 9.0, 37, 4.3],
-['Harina', 262, 16.0, 24, 6.0],
-['Leche', 305, 3.7, 67, 4.3],
+['Granos Cafe', 3000,  1],
+['Azucar', 2000, 0.5],
+['Leche', 1000, 1],
 ];
 
-/* 
+/*
  Para cambiar los valores del header se necesita el cambiar el dataKey en las funciones
     createData() - Parametros y return
     const ColumnData - dataKey necesita ser igual a los parametros del createData()
-    
+
 */
 
 // Create each ITEM
 function createData(
 id: number,
-materiaprima: string,
-calories: number,
-fat: number,
-carbs: number,
-protein: number,
+nombre: string,
+cantidad: number,
+
+costoPorUni: number,
 ): Data {
-return { id, materiaprima, calories, fat, carbs, protein };
+return { id, nombre, cantidad, costoPorUni };
 }
 
 // Fixed HEADER Values
 const columns: ColumnData[] = [
 {
-    width: 200,
-    label: 'Materia Prima',
-    dataKey: 'materiaprima',
+    width: 10,
+    label: 'Nombre',
+    dataKey: 'nombre',
+    numeric: false,
 },
 {
-    width: 120,
-    label: 'Calories\u00A0(g)',
-    dataKey: 'calories',
+    width: 12,
+    label: 'Cantidad Disponible\u00A0(g)',
+    dataKey: 'cantidad',
     numeric: true,
 },
 {
-    width: 120,
-    label: 'Fat\u00A0(g)',
-    dataKey: 'fat',
+    width: 12,
+    label: 'Costo Por Unidad\u00A0(g)',
+    dataKey: 'costoPorUni',
     numeric: true,
 },
-{
-    width: 120,
-    label: 'Carbs\u00A0(g)',
-    dataKey: 'carbs',
-    numeric: true,
-},
-{
-    width: 120,
-    label: 'Protein\u00A0(g)',
-    dataKey: 'protein',
-    numeric: true,
-},
+
 ];
 
-// Repeat random data from the Sample 
+/* Repeat random data from the Sample
 const rows: Data[] = Array.from({ length: 200 }, (_, index) => {
 const randomSelection = sample[Math.floor(Math.random() * sample.length)];
 return createData(index, ...randomSelection);
 });
+*/
+
+//eliminar random
+const rows: Data[] = sample.map((item, index) => createData(index, ...item));
 
 
 const VirtuosoTableComponents: TableComponents<Data> = {
@@ -149,20 +156,92 @@ return (
     </React.Fragment>
 );
 }
+//---------------------------------------------MODAL CODE---------------------------------------------
+const ModalStyle = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 600,
+    height: 200,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
 
+  //const para autocomplete
+
+  const ejemplosInv =[{label:"Huevo"},{label:"Leche"},{label:"Azucar"},{label:"Harina"},{label:"Granos de cafe"},{label:"Sal"}]
 
 const Inventario = () => {
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     return (
-        <Grid item xs = {8}>
-        <Paper style={{ height: 600, width: 1100 }}>
-        <TableVirtuoso
-            data={rows}
-            components={VirtuosoTableComponents}
-            fixedHeaderContent={fixedHeaderContent}
-            itemContent={rowContent}
-        />
-        </Paper>
-        </Grid>
+        <div style={styles.component}>
+
+            <div style={styles.topContainer}>
+                <h1 style={styles.mainTitle}>Inventario</h1>
+                <Button onClick={handleOpen} variant = "contained" color="success" sx={{display:"flex", marginLeft:"20vw", height:"5vh", marginTop:"7vh"}}>Agregar</Button>
+
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={ModalStyle}>
+
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            Agregar Cantidad a Inventario
+                        </Typography>
+
+                        <Typography sx={{marginTop:"20px", marginBottom:"15px"}}>Nombre</Typography>
+
+                        <Autocomplete
+                            disablePortal
+                            id="combo-box-demo"
+                            options={ejemplosInv}
+                            sx={{ width: 200, display:"inline-block", marginRight:"20px"}}
+                            renderInput={(params) => <TextField {...params} label="Producto" />}
+                            />
+                          <TextField
+                            id="outlined-number"
+                            label="Cantidad"
+                            type="number"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            />
+
+                        <Button variant="contained" sx={{display:"block", marginLeft:"450px"}} onClick={handleClose}>Agregar a Inventario</Button>
+
+                    </Box>
+                </Modal>
+
+            </div>
+
+            <div style={styles.container}>
+                <Grid item xs = {8}>
+                    <Paper style={{ height: 600, width: 600 }}>
+                        <TableVirtuoso
+                            data={rows}
+                            components={VirtuosoTableComponents}
+                            fixedHeaderContent={fixedHeaderContent}
+                            itemContent={rowContent}
+                        />
+                    </Paper>
+                </Grid>
+            </div>
+
+
+
+
+        </div>
+
     )
 }
 
