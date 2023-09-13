@@ -16,36 +16,23 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
 
-
+//---------------- ICONS ----------------------------------
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import MenuIcon from '@mui/icons-material/Menu';
-
-//---------------- ICONS
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import InventoryRoundedIcon from '@mui/icons-material/InventoryRounded';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
+//------------------ STYLES ----------------------------------
 import { navbarStyles } from './styles.tsx'
 
-//------------------Navigate
+//------------------ NAVIGATE ----------------------------------
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-//------------------Colors
+//------------------COLORS ----------------------------------
 import { colors } from '../../css/constants.tsx'
-
-
-
-
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-}
-
 
 const NavbarItems = [
   {
@@ -63,8 +50,8 @@ const NavbarItems = [
   {
     id: 2,
     icon: <MonetizationOnIcon />,
-    label: 'Ingresos',
-    route: 'ingresos',
+    label: 'Transacciones',
+    route: 'transacciones',
   },
   {
     id: 3,
@@ -82,12 +69,9 @@ const NavbarItems = [
 ]
 
 
-export default function ResponsiveDrawer(props: Props) {
+export default function ResponsiveDrawer() {
   const navigate = useNavigate();
   const location = useLocation();
-
-
-
 
   const drawer = (
     <div>
@@ -96,7 +80,7 @@ export default function ResponsiveDrawer(props: Props) {
       {/* <Divider sx = {{ borderBottomWidth: 3,
       backgroundColor: 'rgb(255, 250, 224)' }}/> */}
       <List>
-        {NavbarItems.map((item, index) => (
+        {NavbarItems.map((item) => (
           <ListItem key={item.id}
           onClick={() => navigate(item.route)}
           sx={
@@ -106,7 +90,6 @@ export default function ResponsiveDrawer(props: Props) {
                 borderTopRightRadius: '15px',
                 borderBottomRightRadius: '15px',
                 width: '300px',
-
 
               } // Apply green background if the route matches
               : {} // Otherwise, don't apply any background
