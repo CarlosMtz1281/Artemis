@@ -12,7 +12,7 @@ import {
 
 // Pages
 import Inventario from './pages/Inventario/Inventario.tsx'
-import Ingresos from './pages/Ingresos/Ingresos.tsx'
+import Transacciones from './pages/Transacciones/Transacciones.tsx'
 import Gastos from './pages/Gastos/Gastos.tsx'
 import Reporte from './pages/Reporte/Reporte.tsx'
 import Panel from './pages/PanelControl/PanelControl.tsx'
@@ -26,7 +26,7 @@ root.render(
     <Route path="/" element={<App />}>
       <Route path='PanelControl' element={<Panel />} /> // path
       <Route path="inventario" element={<Inventario />} />
-      <Route path="ingresos" element={<Ingresos />} />
+      <Route path="transacciones" element={<Transacciones />} />
       <Route path="gastos" element={<Gastos />} />
       <Route path="reporte" element={<Reporte />} />
     </Route>

@@ -16,8 +16,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
 
-
-
 //---------------- ICONS ----------------------------------
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -52,8 +50,8 @@ const NavbarItems = [
   {
     id: 2,
     icon: <MonetizationOnIcon />,
-    label: 'Ingresos',
-    route: 'ingresos',
+    label: 'Transacciones',
+    route: 'transacciones',
   },
   {
     id: 3,
@@ -82,7 +80,7 @@ export default function ResponsiveDrawer() {
       {/* <Divider sx = {{ borderBottomWidth: 3,
       backgroundColor: 'rgb(255, 250, 224)' }}/> */}
       <List>
-        {NavbarItems.map((item, index) => (
+        {NavbarItems.map((item) => (
           <ListItem key={item.id}
           onClick={() => navigate(item.route)}
           sx={

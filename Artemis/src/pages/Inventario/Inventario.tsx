@@ -36,10 +36,10 @@ interface Data {
 
 
 interface ColumnData {
-dataKey: keyof Data;
-label: string;
-numeric?: boolean;
-width: number;
+    dataKey: keyof Data;
+    label: string;
+    numeric?: boolean;
+    width: number;
 }
 
 // Type of values each value in the ROW should have
@@ -131,7 +131,7 @@ return (
         sx={{
             backgroundColor: 'rgb(250,250,250)',
             fontWeight: 'bold',
-            borderBottom: 1,
+            borderBottom: 2,
         }}
         >
         {column.label}
