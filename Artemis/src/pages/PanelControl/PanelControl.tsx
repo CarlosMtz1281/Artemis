@@ -7,7 +7,7 @@ import './PanelControl.css'
 const PanelControl = () => {
     return (
         <>
-        <h1 style={styles.mainTitle}>Panel de Control</h1>
+        <h1 style={styles.mainTitle}>Panel de Control </h1>
         </>
     )
 }
