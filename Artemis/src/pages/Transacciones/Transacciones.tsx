@@ -203,8 +203,8 @@ const Transacciones = () => {
     const handleCloseAll = () => {setOpenMenu(false), setOpenConfirmation(false)};
 
     return (
-        <div style={styles.component}>
-
+        <>
+        <div>
             <div style={styles.topContainer}>
                 <h1 style={styles.mainTitle}>Transacciones</h1>
 
@@ -364,7 +364,7 @@ const Transacciones = () => {
 
             </div>
 
-            <div style={styles.container}>
+            <div>
                 <Grid item xs = {8}>
                     <Paper style={{ height: 600, width: 600 }}>
                         <TableVirtuoso
@@ -376,12 +376,8 @@ const Transacciones = () => {
                     </Paper>
                 </Grid>
             </div>
-
-
-
-
         </div>
-
+        </>
     )
 }
 

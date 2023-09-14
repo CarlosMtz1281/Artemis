@@ -2,10 +2,6 @@
 import {colors} from '../../css/constants.tsx'
 
 export const styles = {
-
-    component: {
-        marginLeft: '320px',
-    },
     topContainer: {
         marginTop: '20px',
         marginBottom: '20px',

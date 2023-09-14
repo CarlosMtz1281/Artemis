@@ -1,9 +1,17 @@
+import React from 'react'
 
+// STYLE
+import {styles} from './styles'
+import './PanelControl.css'
+import Grid from '@mui/material/Grid'
+import Paper from '@mui/material/Paper'
 
-export default function PanelControl() {
+const PanelControl = () => {
     return (
-        <div>
-            <h1>Panel de Control</h1>
-        </div>
+        <>
+        <h1 style={styles.mainTitle}>Panel de Control</h1>
+        </>
     )
 }
+
+export default PanelControl

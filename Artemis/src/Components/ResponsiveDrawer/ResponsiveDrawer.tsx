@@ -15,6 +15,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid'
 
 //---------------- ICONS ----------------------------------
 import AssessmentIcon from '@mui/icons-material/Assessment';
@@ -74,6 +75,7 @@ export default function ResponsiveDrawer() {
   const location = useLocation();
 
   const drawer = (
+    
     <div>
       <Toolbar />
       <h1>LOGO</h1>
@@ -106,6 +108,7 @@ export default function ResponsiveDrawer() {
 
       <Button variant="contained" color="success"  sx={{marginTop: "70px"}}>Cerrar Sesion</Button>
     </div>
+   
   );
 
   return (

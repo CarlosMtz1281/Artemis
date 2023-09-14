@@ -31,5 +31,5 @@ root.render(
       <Route path="reporte" element={<Reporte />} />
     </Route>
   </Routes>
-</BrowserRouter>,
+  </BrowserRouter>,
 );
