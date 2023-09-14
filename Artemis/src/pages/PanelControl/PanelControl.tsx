@@ -3,8 +3,6 @@ import React from 'react'
 // STYLE
 import {styles} from './styles'
 import './PanelControl.css'
-import Grid from '@mui/material/Grid'
-import Paper from '@mui/material/Paper'
 
 const PanelControl = () => {
     return (
