@@ -2,7 +2,7 @@
   "name": "artemis",
   "private": true,
   "version": "0.0.0",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.14.8",
-    "@mui/material": "^5.14.8",
+    "@mui/material": "^5.14.9",
     "@mui/styled-engine-sc": "^5.14.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

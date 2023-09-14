@@ -34,7 +34,6 @@ interface Data {
 
 }
 
-
 interface ColumnData {
     dataKey: keyof Data;
     label: string;
