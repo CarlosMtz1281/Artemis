@@ -7,6 +7,9 @@ export const connection = mysql.createConnection({
   database: 'artemis'
 });
  
+//******************** USERS ********************
+//Prueba de usuarios
+
 
 /*
 connection.connect((error) => {
@@ -44,7 +47,8 @@ function asyncQuery(sqlQuery) {
   })
 }
 
-// pt 2
+//funciones para exportar los selects de la base de datos 
+
 async function getUsers() {
   var SelectQuery = "Select * FROM `users`";
   var users = await asyncQuery(SelectQuery);
@@ -53,9 +57,120 @@ async function getUsers() {
  return users;
 }
 
+//******************** PRODUCTS ********************
 
-//getUsers().then(users => console.log(users));
+//Prueba de productos 
+
+const product={UserId: 1,Price:50.40,Qty:1};
+
+connection.query('INSERT INTO products SET ?', product, (error, results) => {
+  if (error) throw error;
+  console.log('Product inserted successfully!');
+});
+
+connection.query('SELECT * FROM products', (error, results) => {
+  if (error) throw error;
+  console.log(results);
+});
+
+
+async function getProducts() {
+  var SelectQuery = "Select * FROM `products`";
+  var products = await asyncQuery(SelectQuery);
+
+  
+ return products;
+}
+
+//******************** Raw material  ********************
+
+//Prueba de materia prima
+
+const rawmaterial={Qty:5 ,ReOrderQty:1 ,Price:150 ,Units:"Eggs"};
+
+connection.query('INSERT INTO rawmaterial SET ?', rawmaterial, (error, results) => {
+  if (error) throw error;
+  console.log('Raw material inserted successfully!');
+});
+
+connection.query('SELECT * FROM rawmaterial', (error, results) => {
+  if (error) throw error;
+  console.log(results);
+});
+
+async function getRawMaterial() {
+  var SelectQuery = "Select * FROM `rawmaterial`";
+  var rawmaterial = await asyncQuery(SelectQuery);
+
+  
+ return rawmaterial;
+}
+
+
+//******************** processes ********************
+
+const process={ProductId:1,RmId:1,Qty:1};
+
+connection.query('INSERT INTO processes SET ?', process, (error, results) => {
+  if (error) throw error;
+  console.log('Process inserted successfully!');
+});
+
+connection.query('SELECT * FROM processes', (error, results) => {
+  if (error) throw error;
+  console.log(results);
+});
+
+async function getProcesses() {
+  var SelectQuery = "Select * FROM `processes`";
+  var processes = await asyncQuery(SelectQuery);
+
+ return processes;
+}
+
+
+//******************** Accounting (error en el constraint ) ********************
+//Prueba de contabilidad
+
+/*
+
+const accounting={amount:500};
+
+connection.query('INSERT INTO accounting SET ?', accounting, (error, results) => {
+  if (error) throw error;
+  console.log('Accounting inserted successfully!');
+});
+
+connection.query('SELECT * FROM accounting', (error, results) => {
+  if (error) throw error;
+  console.log(results);
+});
+
+async function getAccounting() {
+  var SelectQuery = "Select * FROM `accounting`";
+  var accounting = await asyncQuery(SelectQuery);
+
+  // console.log(accounting);
+ return accounting;
+}
+
+
+*/
+
+//******************** EXPORTS ********************
+getUsers().then(users => console.log(users));
+getProducts().then(products => console.log(products));
+getRawMaterial().then(rawmaterial => console.log(rawmaterial));
+getProcesses().then(processes => console.log(processes));
+//getAccounting().then(accounting => console.log(accounting));
+
+// getUsers().then(users => console.log(users));
 
 export {getUsers};
+export {getProducts};
+export {getRawMaterial};
+export {getProcesses};
+//export {getAccounting};
+
 
 //connection.end();
