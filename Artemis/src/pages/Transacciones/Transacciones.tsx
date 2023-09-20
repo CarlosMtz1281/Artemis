@@ -1,5 +1,8 @@
 import React, { useTransition } from 'react'
 
+//FILE IMPORTS
+import imageGallery from "./ImageGallery.tsx"
+
 //MUI IMPORTS
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -16,10 +19,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Button } from '@mui/material';
-
-//autocomplete
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
 
 //style
 import {styles} from './styles.tsx'
@@ -202,6 +201,8 @@ const Transacciones = () => {
     const handleCloseConfirmation = () => setOpenConfirmation(false);
     const handleCloseAll = () => {setOpenMenu(false), setOpenConfirmation(false)};
 
+    const productGallery = imageGallery();
+
     return (
         <>
         <div>
@@ -244,50 +245,71 @@ const Transacciones = () => {
                         >
                             Seleccionar Productos:
                         </Typography>
+
+                        <div
+                            style={{
+                                display:"flex",
+                                alignItems:"center",
+                                justifyContent:"center",
+                            }}
+                        >
                         
+                            {/* Calls ImageGallery function */}
+                            <div>
+                                {productGallery}
+                            </div>
+
+                        </div>
+
                         {/* This button creates a confirmation prompt from the selected order */}
                         <div 
                             style={{
                                 display:"flex",
                                 alignItems:"center",
                                 justifyContent:"center",
-                                marginTop: "65vh",
                             }}
                         >
 
-                        {/* Close MenuModal */}
-                        <Button 
-                            variant="contained" 
-                            onClick={handleCloseMenu}
-                            sx={{
-                                display:"inline-block", 
-                                buttonLayout: 'fixed',
-                                backgroundColor: colors.darkRed,
-                                "&:hover":{backgroundColor: "red"},
-                                "&:active":{opacity:0.7},
-                                "&:focus":{outline:'none'},
-                                px: 3,
-                                py: 2,
-                            }}>
-                                Cancelar Orden
-                        </Button>
+                            {/* Close MenuModal */}
+                            <Button 
+                                variant="contained" 
+                                onClick={handleCloseMenu}
+                                sx={{
+                                    display:"inline-block", 
+                                    buttonLayout: 'fixed',
+                                    backgroundColor: colors.darkRed,
+                                    "&:hover":{backgroundColor: "red"},
+                                    "&:active":{opacity:0.7},
+                                    "&:focus":{outline:'none'},
+                                    px: 3,
+                                    py: 2,
+                                    position: "absolute",
+                                    bottom: 30,
+                                    left: 30,
+                                }}>
+                                    Cancelar Orden
+                            </Button>
 
-                        <Button 
-                            variant="contained" 
-                            onClick={handleOpenConfirmation}
-                            sx={{
-                                display:"inline-block", 
-                                buttonLayout: 'fixed',
-                                marginLeft:"auto", 
-                                backgroundColor: colors.darkGreen,
-                                "&:hover":{backgroundColor: "green"},
-                                "&:active":{opacity:0.7},
-                                "&:focus":{outline:'none'},
-                                px: 3,
-                                py: 2,
-                            }}>
-                                Completar Orden
-                        </Button>
+                            <Button 
+                                variant="contained" 
+                                onClick={handleOpenConfirmation}
+                                sx={{
+                                    display:"inline-block", 
+                                    buttonLayout: 'fixed',
+                                    marginLeft:"auto", 
+                                    backgroundColor: colors.darkGreen,
+                                    "&:hover":{backgroundColor: "green"},
+                                    "&:active":{opacity:0.7},
+                                    "&:focus":{outline:'none'},
+                                    px: 3,
+                                    py: 2,
+                                    position: "absolute",
+                                    bottom: 30,
+                                    right: 30,
+                                }}>
+                                    Completar Orden
+                            </Button>
+                        
 
                         </div>
 
@@ -300,65 +322,64 @@ const Transacciones = () => {
                             {/* Stylize */}
                             <Box sx={ConfirmationModal}>
 
-                            <Typography 
-                                id="modal-modal-title" 
-                                variant="h6" 
-                                component="h2" 
-                                fontWeight={'bold'} 
-                                fontSize={'25px'}
-                                textAlign={'center'}
-                            >
-                                ¿Segure que quieres completar la orden?
-                            </Typography>
+                                <Typography 
+                                    id="modal-modal-title" 
+                                    variant="h6" 
+                                    component="h2" 
+                                    fontWeight={'bold'} 
+                                    fontSize={'25px'}
+                                    textAlign={'center'}
+                                >
+                                    ¿Segure que quieres completar la orden?
+                                </Typography>
 
-                            {/* This div stores both confirmation buttons and styles them */}
-                            <div 
-                                style={{
-                                    display:"flex",
-                                    alignItems:"center",
-                                    justifyContent:"center",
-                                    marginTop: "10vh",
-                                    height:"10vh",
-                                }}
-                            >
-                                {/* This button returns user to the previous Modal */}
-                                <Button 
-                                variant='contained' 
-                                onClick={handleCloseConfirmation}
-                                sx={{
-                                    display:"inline-block", 
-                                    buttonLayout: 'fixed', 
-                                    backgroundColor: colors.darkRed,
-                                    "&:hover":{backgroundColor: "red"},
-                                    "&:active":{opacity:0.7},
-                                    "&:focus":{outline:'none'},
-                                    px: 3,
-                                    py: 2,
-                                }}>
-                                    Cancelar
-                                </Button>
+                                {/* This div stores both confirmation buttons and styles them */}
+                                <div 
+                                    style={{
+                                        display:"flex",
+                                        alignItems:"center",
+                                        justifyContent:"center",
+                                        marginTop: "10vh",
+                                        height:"10vh",
+                                    }}
+                                >
+                                    {/* This button returns user to the previous Modal */}
+                                    <Button 
+                                    variant='contained' 
+                                    onClick={handleCloseConfirmation}
+                                    sx={{
+                                        display:"inline-block", 
+                                        buttonLayout: 'fixed', 
+                                        backgroundColor: colors.darkRed,
+                                        "&:hover":{backgroundColor: "red"},
+                                        "&:active":{opacity:0.7},
+                                        "&:focus":{outline:'none'},
+                                        px: 3,
+                                        py: 2,
+                                    }}>
+                                        Cancelar
+                                    </Button>
 
-                                {/* This button closes both Modals */}
-                                <Button 
-                                variant='contained' 
-                                onClick={handleCloseAll}
-                                sx={{
-                                    display:"inline-block", 
-                                    buttonLayout: 'fixed', 
-                                    marginLeft:"10vw", 
-                                    backgroundColor: colors.darkGreen,
-                                    "&:hover":{backgroundColor: "green"},
-                                    "&:active":{opacity:0.7},
-                                    "&:focus":{outline:'none'},
-                                    px: 3,
-                                    py: 2,
-                                }}>
-                                    Confirmar
-                                </Button>
-                            </div>
+                                    {/* This button closes both Modals */}
+                                    <Button 
+                                    variant='contained' 
+                                    onClick={handleCloseAll}
+                                    sx={{
+                                        display:"inline-block", 
+                                        buttonLayout: 'fixed', 
+                                        marginLeft:"10vw", 
+                                        backgroundColor: colors.darkGreen,
+                                        "&:hover":{backgroundColor: "green"},
+                                        "&:active":{opacity:0.7},
+                                        "&:focus":{outline:'none'},
+                                        px: 3,
+                                        py: 2,
+                                    }}>
+                                        Confirmar
+                                    </Button>
+                                </div>
                             </Box>
                         </Modal>
-
                     </Box>
                 </Modal>
 
