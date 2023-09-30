@@ -20,5 +20,16 @@ export const styles = {
     container: {
 
         marginLeft: '20px',
-    }
+    },
+
+    widgetInventarios: {
+        backgroundColor: colors.lightGrey,
+        width: '30vw',
+        height: '50vh',
+        display: 'absolute',
+        marginLeft: '65vw',
+        marginTop: '15vh',
+        borderRadius: '10px',
+    },
+
 }

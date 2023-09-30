@@ -1,46 +1,34 @@
 import React from 'react'
 
-// Material UI
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Unstable_Grid2';
 
-import {colors} from '../../css/constants'
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#D3D3D3',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: colors.whiteTxt,
-  minWidth: "56vw",
-  minHeight: "40vh",
-}));
+import InventoryWidget from '../../Components/inventoryWidget/inventoryWidget.tsx'
+const inventoryArray = [
+    {
+        id: 1,
+        name: "Inventario 1",
+        description: "Inventario de prueba 1",
+    },
+    {
+        id: 2,
+        name: "Inventario 2",
+        description: "Inventario de prueba 2",
+    }
+]
 
 // STYLE
-import {styles} from './styles'
+import {styles} from '../PanelControl/styles.tsx'
 import './PanelControl.css'
 
 const PanelControl = () => {
     return (
-        <>
-        <Box> 
-            <Grid>
-                <Item>
-                    wkjenfwkjefnekwjf
-                </Item>
-            </Grid>
-            <Grid>
-                <Item>
-                    ernekrfjnerkjn
-                </Item>
-            </Grid>
-        </Box>
-        </>
+        <div>
+            <div style={styles.widgetInventarios}>
+                <div style={{marginBottom: '2vh'}}/>
+                {inventoryArray.map((item) => (
+                    <InventoryWidget />
+                ))}
+            </div>
+        </div>
     )
 }
 
