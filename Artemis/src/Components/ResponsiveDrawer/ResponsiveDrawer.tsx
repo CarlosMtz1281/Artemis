@@ -1,25 +1,18 @@
-import * as React from 'react';
 
 // -------------------------MUI IMPORTS----------------------------------
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
+
 import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
+
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid'
 
 //---------------- ICONS ----------------------------------
 import AssessmentIcon from '@mui/icons-material/Assessment';
-import MenuIcon from '@mui/icons-material/Menu';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import InventoryRoundedIcon from '@mui/icons-material/InventoryRounded';
@@ -57,8 +50,8 @@ const NavbarItems = [
   {
     id: 3,
     icon: <ReceiptLongIcon />,
-    label: 'Gastos',
-    route: 'gastos',
+    label: 'Nueva Venta',
+    route: 'nuevaVenta',
   },
   {
     id: 4,
@@ -75,7 +68,7 @@ export default function ResponsiveDrawer() {
   const location = useLocation();
 
   const drawer = (
-    
+
     <div>
       <Toolbar />
       <h1>LOGO</h1>
@@ -108,7 +101,7 @@ export default function ResponsiveDrawer() {
 
       <Button variant="contained" color="success"  sx={{marginTop: "70px"}}>Cerrar Sesion</Button>
     </div>
-   
+
   );
 
   return (
